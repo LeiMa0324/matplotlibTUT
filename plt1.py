@@ -121,8 +121,27 @@ ax.spines['left'].set_position(('data',0))
 # 添加标注点
 x0 = 1
 y0 = 2*x0 + 1
-# 使用 scatter画一个点
-plt.scatter(x0,y0)
+# 使用 scatter画一个点,s=size
+plt.scatter(x0,y0,s=50,color='b')
+# 绘制从(x0,y0)到(x0,0)的虚线
+plt.plot([x0,x0],[y0,0],'k--',linewidth = 2.5)
+
+# method 1 使用 plt.annotate
+            # annotation 的文字内容
+plt.annotate(r'$2x+1=%s$'% y0,
+# 在 xy=(x0,y0)出打印 string，xycoords='data' 意思为以 data 为基准
+             xy=(x0,y0),xycoords='data',
+            # 使用 textcoords='offset points' 代表偏置点为 xy 的(+30,-30)的地方放置 text
+             xytext=(+30,-30),
+             textcoords='offset points',
+             fontsize=16,
+             # 箭头形状，弧度等
+             arrowprops= dict(arrowstyle='->',connectionstyle='arc3,rad=.2'))
+
+# method 2 使用 plt.text
+# 开始位置
+plt.text(-3.7,3,r'$This\ is\ some\ text.\ \mu\ \sigma_i\ \alpha_t $',
+         fontdict={'size':16,'color':'r'})
 
 plt.show()
 
