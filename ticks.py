@@ -27,4 +27,5 @@ for label in ax.get_xticklabels() +ax.get_yticklabels():
     label.set_fontsize(12)
     # 每一个tick外面都有一个box，设置该box的background color,alpha 为透明度
     label.set_bbox(dict(facecolor='white',edgecolor='None',alpha=0.7))
+
 plt.show()
